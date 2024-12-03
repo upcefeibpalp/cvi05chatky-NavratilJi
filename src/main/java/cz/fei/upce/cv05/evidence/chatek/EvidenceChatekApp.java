@@ -99,15 +99,41 @@ public class EvidenceChatekApp {
                 }
 
                 case ODEBRANI_NAVSTEVNIKU -> {
-                    // TODO
+                    System.out.print("Zadej cislo chatky ze ktere chces odebrat navstevniky: ");
+                    int cisloChatky = scanner.nextInt() - 1;
+
+                    if (cisloChatky < 0 || cisloChatky >= chatky.length) {
+                        System.err.println("Tato chatka neexistuje");
+                        continue;
+                    }
+                    System.out.print("Zadej pocet navstevniku: ");
+                    int odebraniNavstevnici = scanner.nextInt();
+
+                    if (odebraniNavstevnici <= 0 || odebraniNavstevnici > MAX_VELIKOST_CHATKY) {
+                        System.err.println("Neplatna hodnota pro pocet navstevniku");
+                        continue;
+                    }
+                    if ((chatky[cisloChatky] - odebraniNavstevnici) < 0) {
+                        System.err.println("Prekrocen minimalni objem chatky");
+                        continue;
+                    }
+                    chatky[cisloChatky] = chatky[cisloChatky] - odebraniNavstevnici;
                 }
 
                 case CELKOVA_OBSAZENOST -> {
-                    // TODO
+                    int celkovaObsazenost = 0;
+                    for (int i = 0; i < chatky.length; i++) {
+                        celkovaObsazenost += chatky[i];
+                    }
+                    System.out.println("Celkem je ubytovaných " + celkovaObsazenost + " návštěvníků");
                 }
 
                 case VYPIS_PRAZDNE_CHATKY -> {
-                    // TODO
+                    for (int i = 0; i < chatky.length; i++) {
+                        if(chatky[i] == 0){
+                            System.out.println("Chatka [" + (i + 1) + "] je prázdná");
+                        }
+                    }
                 }
 
                 case KONEC_PROGRAMU -> {

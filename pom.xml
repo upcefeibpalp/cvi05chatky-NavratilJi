@@ -11,4 +11,5 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>cz.fei.upce.cv05.evidence.chatek.EvidenceChatekApp</exec.mainClass>
     </properties>
+    <name>ChatkyNavratil</name>
 </project>
